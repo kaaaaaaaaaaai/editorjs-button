@@ -13,6 +13,11 @@ export default class AnyButton {
         }
     }
 
+    static get enableLineBreaks() {
+        return false;
+    }
+
+
     /**
      *
      * @returns {{EDIT: number, VIEW: number}}
