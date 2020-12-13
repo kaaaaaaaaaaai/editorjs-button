@@ -146,7 +146,7 @@ export default class AnyButton {
 
         if (this._data.link !== "") {
             this.init()
-            this.show()
+            this.show(AnyButton.STATE.VIEW)
         }
 
         this.nodes.wrapper.appendChild(this.nodes.container);
@@ -176,7 +176,7 @@ export default class AnyButton {
                 "link": this.nodes.linkInput.textContent,
                 "text": this.nodes.textInput.textContent
             }
-            this.show();
+            this.show(AnyButton.STATE.VIEW);
         });
 
         inputHolder.appendChild(this.nodes.textInput);
@@ -191,10 +191,10 @@ export default class AnyButton {
         this.nodes.linkInput.textContent = this._data.link;
     }
 
-    show(){
+    show(state){
         this.nodes.anyButton.textContent = this._data.text;
         this.nodes.anyButton.setAttribute("href", this._data.link);
-        this.changeState(AnyButton.STATE.VIEW);
+        this.changeState(state);
     }
 
     makeAnyButtonHolder(){
@@ -240,7 +240,11 @@ export default class AnyButton {
         const label = this.make('label', [this.CSS.toggleLabel],{"for":"toggle"});
 
         this.nodes.toggleInput.addEventListener("change", (event) => {
-            this.changeState(Number(this.nodes.toggleInput.checked))
+            this.data = {
+                "link": this.nodes.linkInput.textContent,
+                "text": this.nodes.textInput.textContent
+            }
+            this.show(Number(this.nodes.toggleInput.checked))
         })
         toggleHolder.appendChild(this.nodes.toggleInput);
         toggleHolder.appendChild(label);
