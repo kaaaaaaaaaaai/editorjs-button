@@ -27,7 +27,7 @@ const anyButton = require('anyButton');
 
 ### Load from CDN
 
-`https://cdn.jsdelivr.net/npm/editorjs-button@1.0.1`
+`https://cdn.jsdelivr.net/npm/editorjs-button@1.0.3`
 
 ## Usage
 
