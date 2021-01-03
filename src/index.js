@@ -13,6 +13,18 @@ export default class AnyButton {
         }
     }
 
+    /**
+     * Returns true to notify the core that read-only mode is supported
+     *
+     * @return {boolean}
+     */
+    static get isReadOnlySupported() {
+        return true;
+    }
+    /**
+     *
+     * @returns {boolean}
+     */
     static get enableLineBreaks() {
         return false;
     }
@@ -88,6 +100,8 @@ export default class AnyButton {
      */
     constructor({ data, config, api, readOnly }) {
         this.api = api;
+        this.readOnly = readOnly;
+
         this.nodes = {
             wrapper: null,
             container: null,

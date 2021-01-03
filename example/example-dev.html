@@ -34,6 +34,15 @@
       <div class="ce-example__button" id="saveButton">
         editor.save()
       </div>
+      <div class="ce-example__statusbar">
+        Readonly:
+        <b id="readonly-state">
+          Off
+        </b>
+        <div class="ce-example__statusbar-button" id="toggleReadOnlyButton">
+          toggle
+        </div>
+      </div>
     </div>
     <div class="ce-example__output">
       <pre class="ce-example__output-content" id="output"></pre>
@@ -67,6 +76,7 @@
      * @see docs/installation.md for mode details
      */
     var editor = new EditorJS({
+      readOnly: false,
       /**
        * Wrapper of Editor
        */
@@ -96,7 +106,7 @@
       /**
        * Previously saved data that should be rendered
        */
-      data: { "time" : 1607845788736, "blocks" : [ { "type" : "AnyButton", "data" : { "link" : "https://editorjs.io/", "text" : "editorjs official" } } ], "version" : "2.19.1" },
+      data:{ "time" : 1609681433283, "blocks" : [ { "type" : "AnyButton", "data" : { "link" : "https://editorjs.io/", "text" : "editorjs official" } }, { "type" : "paragraph", "data" : { "text" : "readonly paragraph" } } ], "version" : "2.19.1" },
 
       /**
        * This Tool will be used as default
@@ -126,6 +136,19 @@
       editor.save().then((savedData) => {
         cPreview.show(savedData, document.getElementById("output"));
       });
+    });
+
+    /**
+     * Toggle read-only button
+     */
+    const toggleReadOnlyButton = document.getElementById('toggleReadOnlyButton');
+    const readOnlyIndicator = document.getElementById('readonly-state');
+    /**
+     * Toggle read-only example
+     */
+    toggleReadOnlyButton.addEventListener('click', async () => {
+      const readOnlyState = await editor.readOnly.toggle();
+      readOnlyIndicator.textContent = readOnlyState ? 'On' : 'Off';
     });
   </script>
 </body>
