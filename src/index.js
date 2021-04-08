@@ -182,6 +182,7 @@ export default class AnyButton {
         this.nodes.linkInput.dataset.placeholder = this.api.i18n.t('Link Url');
 
         this.nodes.registButton = this.make('button',[this.api.styles.button, this.CSS.registButton]);
+        this.nodes.registButton.type = 'button';
         this.nodes.registButton.textContent = this.api.i18n.t('Set');
 
 
