@@ -1,4 +1,4 @@
-![](https://badgen.net/badge/Editor.js/v2.0/blue)
+![](https://badgen.net/badge/Editor.js/v2.22.3/blue)
 
 # Set Link and Text and Generate button plugin for Editor.js
 
@@ -27,7 +27,7 @@ const anyButton = require('anyButton');
 
 ### Load from CDN
 
-`https://cdn.jsdelivr.net/npm/editorjs-button@1.0.3`
+`https://cdn.jsdelivr.net/npm/editorjs-button@1.0.4`
 
 ## Usage
 
