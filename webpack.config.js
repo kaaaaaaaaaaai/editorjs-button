@@ -1,7 +1,7 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   module: {
     rules: [
       {
@@ -9,36 +9,33 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
-            query: {
-              presets: [ '@babel/preset-env' ],
-            },
+            loader: "babel-loader",
           },
-        ]
+        ],
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(svg)$/,
+        test: /\.svg$/,
         use: [
           {
-            loader: 'raw-loader',
-          }
-        ]
-      }
-    ]
+            loader: "svg-inline-loader",
+            options: {
+              removeSVGTagAttrs: false,
+            },
+          },
+        ],
+      },
+    ],
   },
   output: {
-    path: path.join(__dirname, '/dist'),
-    publicPath: '/',
-    filename: 'bundle.js',
-    library: 'AnyButton',
-    libraryExport: 'default',
-    libraryTarget: 'umd'
-  }
+    path: path.join(__dirname, "/dist"),
+    publicPath: "/",
+    filename: "bundle.js",
+    library: "AnyButton",
+    libraryExport: "default",
+    libraryTarget: "umd",
+  },
 };
