@@ -9,21 +9,20 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 12
+          node-version: 18
           registry-url: https://registry.npmjs.org/ 
-      - run: yarn
-      - run: yarn build
-      - run: yarn publish --access=public
+      - run: npm run build
+      - run: npm publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   notify:
     needs: publish
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: echo ::set-env name=EMOJI_PACKAGE::$'\xf0\x9f\x93\xa6'
       - run: echo ::set-env name=PACKAGE_NAME::$(node -p "require('./package.json').name")
       - run: echo ::set-env name=PACKAGE_VERSION::$(node -p "require('./package.json').version")
