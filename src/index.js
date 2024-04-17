@@ -1,7 +1,6 @@
-import css from './index.css';
+import css from './index.scss';
 
 export default class AnyButton {
-
     /**
      *
      * @returns {{icon: string, title: string}}
@@ -117,7 +116,7 @@ export default class AnyButton {
         const _CSS = {
             baseClass: this.api.styles.block,
             hide: "hide",
-            btn: "btn",
+            btn: "anyButton__btn",
             container: "anyButtonContainer",
             input: "anyButtonContainer__input",
 
@@ -126,7 +125,7 @@ export default class AnyButton {
             inputLink: "anyButtonContainer__input--link",
             registButton: "anyButtonContainer__registerButton",
             anyButtonHolder: "anyButtonContainer__anyButtonHolder",
-            btnColor: "btn--default",
+            btnColor: "anyButton__btn--default",
             toggleSwitch: "toggle-switch",
             toggleInput: "toggle-input",
             toggleLabel: "toggle-label",
