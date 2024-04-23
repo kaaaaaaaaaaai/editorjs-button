@@ -4,6 +4,13 @@
 
 ![画面収録 2020-12-13 16 59 53](https://user-images.githubusercontent.com/2194021/102006852-7a6fb880-3d67-11eb-98d2-20b7e88672df.gif)
 
+### change log
+- v2.x
+  - toogle menu button
+- v3.x
+  - delete toggle button, and integration blockTune menu
+  - icon update
+
 ## Installation
 
 ### Install via NPM
@@ -27,7 +34,7 @@ const anyButton = require('anyButton');
 
 ### Load from CDN
 
-`https://cdn.jsdelivr.net/npm/editorjs-button@1.0.4`
+`https://cdn.jsdelivr.net/npm/editorjs-button@latest`
 
 ## Usage
 
