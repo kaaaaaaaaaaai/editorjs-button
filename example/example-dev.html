@@ -76,11 +76,12 @@
      * @see docs/installation.md for mode details
      */
     var editor = new EditorJS({
-      readOnly: true,
+      readOnly: false,
       /**
        * Wrapper of Editor
        */
       holder: 'editorjs',
+      logLevel: 'VERBOSE',
 
       /**
        * Tools list
@@ -99,8 +100,9 @@
               'Link Url': 'ボタンの飛び先のURL',
               'Set': "設定する",
               'Default Button': "デフォルト",
+              "ボタンを編集":"ボタンを編集"
             }
-          }
+          },
         },
       },
       /**
