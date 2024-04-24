@@ -1,5 +1,6 @@
 import css from './index.scss';
 import svg from './toolbox-icon.svg'
+import notifier from "codex-notifier";
 export default class AnyButton {
     /**
      *
@@ -117,6 +118,29 @@ export default class AnyButton {
         }
     }
 
+    defaultLinkValidation(text){
+        //全ての文字列が渡されるがURLのみ許可する. URLじゃない文字列も考慮する
+        const url = new RegExp("^(http|https)://([\\w-]+\\.)+[\\w-]+(/[\\w-./?%&=]*)?$");
+        if(!url.test(text)){
+            notifier.show({
+                message: "ボタンURLを入力してください",
+                style: 'error'
+            })
+            return false;
+        }
+        return true;
+    }
+
+    defaultTextValidation(text){
+        if(text === ""){
+            notifier.show({
+                message: "ボタンテキストを入力してください",
+                style: 'error'
+            })
+            return false;
+        }
+        return true;
+    }
     /**
      *
      * @param data
@@ -156,6 +180,8 @@ export default class AnyButton {
         }
 
         this.CSS = Object.assign(_CSS, config.css)
+        this.linkValidation = config.linkValidation || this.defaultLinkValidation.bind(this)
+        this.textValidation = config.textValidation || this.defaultTextValidation.bind(this)
 
         this.data = {
             link: "",
@@ -207,6 +233,13 @@ export default class AnyButton {
 
 
         this.nodes.registButton.addEventListener('click', (event) => {
+
+            if(!this.linkValidation(this.nodes.linkInput.textContent)){
+                return;
+            }
+            if(!this.textValidation(this.nodes.textInput.textContent)){
+                return;
+            }
             this.data = {
                 "link": this.nodes.linkInput.textContent,
                 "text": this.nodes.textInput.textContent

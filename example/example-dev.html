@@ -90,6 +90,16 @@
         AnyButton: {
           class: AnyButton,
           inlineToolbar: false,
+          config:{
+            textValidation: (text) => {
+              console.log("error!", text)
+              return true;
+            },
+            linkValidation: (text) => {
+              console.log("error!", text)
+              return false;
+            }
+          }
         },
       },
       i18n: {

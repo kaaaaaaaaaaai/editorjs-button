@@ -48,6 +48,14 @@ tools: {
           config:{
             css:{
               "btnColor": "btn--gray",
+            },
+            textValidation: (text) => {
+              console.log("error!", text)
+              return true;
+            },
+            linkValidation: (text) => {
+              console.log("error!", text)
+              return false;
             }
           }
         },
@@ -66,6 +74,12 @@ tools: {
       },
 }
 ```
+## input field validation
+
+if you want to validate input field, you can use `textValidation` and `linkValidation` function.
+
+
+
 
 ## Config Params
 
