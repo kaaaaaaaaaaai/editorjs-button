@@ -77,7 +77,8 @@
     font-size: 1rem;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-
+    word-break: break-all;
+    overflow-wrap: break-word;
     &--default{
         color: #fff;
         background-color: #0d6efd;

@@ -30,7 +30,6 @@ export default class AnyButton {
             label: this.api.i18n.t(tune.title),
             name: tune.name,
             onActivate: () => {
-                console.log("onActivate")
                 this.data = {
                     "link": this.nodes.linkInput.textContent,
                     "text": this.nodes.textInput.textContent
@@ -120,10 +119,20 @@ export default class AnyButton {
 
     defaultLinkValidation(text){
         //全ての文字列が渡されるがURLのみ許可する. URLじゃない文字列も考慮する
-        const url = new RegExp("^(http|https)://([\\w-]+\\.)+[\\w-]+(/[\\w-./?%&=]*)?$");
-        if(!url.test(text)){
+        let url = null;
+        try {
+            url = new URL(text);
+        }catch (e){
             notifier.show({
-                message: "ボタンURLを入力してください",
+                message: "URLが間違っています",
+                style: 'error'
+            })
+            return false;
+        }
+        //httpsかhttpが入っていなければエラー
+        if(url.protocol !== "https:" && url.protocol !== "http:"){
+            notifier.show({
+                message: "正しいURLを入力してください",
                 style: 'error'
             })
             return false;
@@ -134,7 +143,7 @@ export default class AnyButton {
     defaultTextValidation(text){
         if(text === ""){
             notifier.show({
-                message: "ボタンテキストを入力してください",
+                message: "ボタンのテキストを入力してください",
                 style: 'error'
             })
             return false;
