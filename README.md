@@ -6,7 +6,7 @@
 
 ### change log
 - v2.x
-  - toogle menu button
+  - toggle menu button
 - v3.x
   - delete toggle button, and integration blockTune menu
   - icon update
